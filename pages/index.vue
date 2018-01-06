@@ -7,10 +7,13 @@
       <input type="text" placeholder="sun" v-model="query">
       <i @click="getResult(query)" class="material-icons search">search</i>
     </form>
-    <div v-if="imgData" class="image-container">
+    <div v-if="imgData && imgData.length" class="image-container">
       <figure class="figure"v-for="image in imgData">
         <img :src="image.links[0].href" alt="">
       </figure>
+    </div>
+    <div v-else class="else">
+      Uuuups! I'm lost in space, help find something.
     </div>
   </section>
 </template>
@@ -35,8 +38,10 @@ export default {
     getResult (query) {
       axios.get('https://images-api.nasa.gov/search?q=' + query + ' &media_type=image')
         .then(response => {
-          console.log(response.data.collection.items)
           this.imgData = response.data.collection.items
+        })
+        .catch(e => {
+          console.log(e)
         })
     }
   }
@@ -53,6 +58,9 @@ export default {
   text-align: center;
   padding: 0 5em;
   background-color: #e4e3de;
+  @media screen and (max-width: 420px){
+    padding: 0 5vw;
+  }
 }
 
 .title {
@@ -86,7 +94,11 @@ input{
   color: #526488;
   word-spacing: 5px;
   padding: 1em;
-  margin: 0 1em 0 0
+  margin: 0 1em 0 0;
+  // width: 80%;
+  @media screen and (max-width: 406px){
+    width: 70%;
+  }
 }
 .search:hover{
   cursor: pointer;
@@ -110,5 +122,12 @@ img{
    grid-template-columns: repeat(auto-fit, minmax(20rem,1fr));
    grid-auto-flow: dense;
    grid-auto-rows: 20rem
+}
+.else{
+  font-weight: 300;
+  font-size: 1rem;
+  color: #35495e;
+  // word-spacing: 5px;
+  margin: 1em 0;
 }
 </style>
