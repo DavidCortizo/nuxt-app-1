@@ -3,8 +3,9 @@
   <section class="container">
     <h2 class="title">Search in Space!</h2>
     <form v-on:submit.prevent="getResult(query)">
-      <label class="subtitle">Type what you are looking for:</label>
+      <label class="subtitle">Type in what you are looking for:</label>
       <input type="text" placeholder="sun" v-model="query">
+      <i @click="getResult(query)" class="material-icons search">search</i>
     </form>
     <div v-if="imgData" class="image-container">
       <figure class="figure"v-for="image in imgData">
@@ -16,8 +17,12 @@
 
 <script>
 import axios from 'axios'
-
 export default {
+  head: {
+    link: [
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
+    ]
+  },
   components: {
   },
   data () {
@@ -83,6 +88,9 @@ input{
   padding: 1em;
   margin: 0 1em 0 0
 }
+.search:hover{
+  cursor: pointer;
+}
 .figure{
   width: 100%;
   height: 100%;
@@ -94,6 +102,7 @@ img{
   height: 100%;
   object-fit: cover;
   margin: 0;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
 }
 .image-container{
    display: grid;

@@ -10,7 +10,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'test 1' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' },
+      { rel: 'stylesheet', href: '/favicon.ico' }
     ]
   },
   /*
@@ -34,6 +35,7 @@ module.exports = {
         })
       }
     },
-    vendor: ['axios']
+    vendor: ['axios'],
+    modules: ['nuxt-material-design-icons']
   }
 }
