@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-test-1",
+  "name": "Spacetime",
   "version": "1.0.0",
   "description": "test 1",
   "author": "DavidCortizo <cortizo7269@gmail.com>",
@@ -28,6 +28,9 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "node-sass": "^4.7.2",
-    "sass-loader": "^6.0.6"
+    "sass-loader": "^6.0.6",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "vuetify": "^0.17.6"
   }
 }
